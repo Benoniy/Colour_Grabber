@@ -17,30 +17,30 @@ public class grabberColour {
         int[] color = {red, green, blue};
 
         for (int c: color){
-            int opperation = c/16;
+            int operation = c/16;
             for (int i = 0; i < 2; i++){
-                if (opperation == 10) {
+                if (operation == 10) {
                     out.append("A");
                 }
-                else if (opperation == 11) {
+                else if (operation == 11) {
                     out.append("B");
                 }
-                else if (opperation == 12) {
+                else if (operation == 12) {
                     out.append("C");
                 }
-                else if (opperation == 13) {
+                else if (operation == 13) {
                     out.append("D");
                 }
-                else if (opperation == 14) {
+                else if (operation == 14) {
                     out.append("E");
                 }
-                else if (opperation == 15) {
+                else if (operation == 15) {
                     out.append("F");
                 }
                 else{
-                    out.append(opperation);
+                    out.append(operation);
                 }
-                opperation = c%16;
+                operation = c%16;
             }
         }
         return out.toString();
