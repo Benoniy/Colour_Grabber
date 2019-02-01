@@ -9,7 +9,7 @@ public class grabberColour {
         blue = (pixel) & 0xff;
         hex = convertToHex(red, green, blue);
 
-        System.out.println("R: " + red + ", G: " + green + ", B: " + blue + ", " + hex);
+        System.out.println("R: " + red + ", G: " + green + ", B: " + blue + ", Hex: " + hex);
     }
 
     String convertToHex(int red, int green, int blue){
