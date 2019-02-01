@@ -8,8 +8,7 @@ public class grabberColour {
         green = (pixel >> 8) & 0xff;
         blue = (pixel) & 0xff;
         hex = convertToHex(red, green, blue);
-
-        System.out.println("R: " + red + ", G: " + green + ", B: " + blue + ", Hex: " + hex);
+        System.out.println(this.toString());
     }
 
     String convertToHex(int red, int green, int blue){
@@ -44,5 +43,9 @@ public class grabberColour {
             }
         }
         return out.toString();
+    }
+
+    public String toString(){
+        return "R: " + red + ", G: " + green + ", B: " + blue + ", Hex: " + hex;
     }
 }
