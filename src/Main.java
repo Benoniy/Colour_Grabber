@@ -34,13 +34,13 @@ public class Main {
             }
         });
 
-        //Screen grabs every 20ms
+        //Screen grabs every 33ms for a frame rate of 31 fps
         boolean loop = true;
         while (loop){
             location = MouseInfo.getPointerInfo().getLocation();
             capture = new Robot().createScreenCapture(screenRect);
             pixel[0] = capture.getRGB(location.x, location.y);
-            Thread.sleep(20);
+            Thread.sleep(33);
         }
     }
 }
