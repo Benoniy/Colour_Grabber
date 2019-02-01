@@ -53,11 +53,12 @@ class captureWindow extends JFrame{
                     colours.add(new grabberColour(pixel));
                 }
                 else if (e == MouseEvent.BUTTON3){
+                    System.out.println("\n******************************************");
                     System.out.println("\nColours:");
                     for (grabberColour c : colours){
                         System.out.println(c.toString());
                     }
-                    System.out.println("\n****************************");
+                    System.out.println("\n******************************************\n");
                 }
 
             }
