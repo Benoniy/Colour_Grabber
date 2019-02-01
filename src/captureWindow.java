@@ -33,6 +33,8 @@ public class captureWindow extends JFrame{
 
                 //error because of this
                 Constants.colours.add(new grabberColour(pixel[0]));
+                //
+
                 int len = Constants.colours.size();
                 System.out.println(Constants.colours.get(len - 1).red + ", " + Constants.colours.get(len - 1).green +
                         ", " + Constants.colours.get(len - 1).blue);
