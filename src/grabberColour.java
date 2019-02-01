@@ -1,9 +1,9 @@
 
 public class grabberColour {
-    int red, green, blue;
-    String hex;
+    private int red, green, blue;
+    private String hex;
 
-    public grabberColour(int pixel){
+    grabberColour(int pixel){
         red = (pixel >> 16) & 0xff;
         green = (pixel >> 8) & 0xff;
         blue = (pixel) & 0xff;
@@ -11,7 +11,7 @@ public class grabberColour {
         System.out.println(this.toString());
     }
 
-    String convertToHex(int red, int green, int blue){
+    private String convertToHex(int red, int green, int blue){
         StringBuilder out = new StringBuilder("#");
         int[] color = {red, green, blue};
 

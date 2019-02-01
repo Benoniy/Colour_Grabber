@@ -5,11 +5,12 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class captureWindow extends JFrame{
-    ArrayList<grabberColour> colours = new ArrayList<>();
-    int pixel = 0;
+class captureWindow extends JFrame{
+    private ArrayList<grabberColour> colours = new ArrayList<>();
+    private int pixel = 0;
+    private boolean loop = true;
 
-    public captureWindow() throws AWTException, InterruptedException {
+    captureWindow() throws AWTException, InterruptedException {
         super();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -51,6 +52,9 @@ public class captureWindow extends JFrame{
                 if (e == MouseEvent.BUTTON1){
                     colours.add(new grabberColour(pixel));
                 }
+                else if (e == MouseEvent.BUTTON2){
+                    loop = false;
+                }
                 else if (e == MouseEvent.BUTTON3){
                     System.out.println("\nColours:");
                     for (grabberColour c : colours){
@@ -69,7 +73,7 @@ public class captureWindow extends JFrame{
         });
 
         //Screen grabs every 33ms for a frame rate of 31 fps
-        boolean loop = true;
+
         while (loop){
             location = MouseInfo.getPointerInfo().getLocation();
             capture = new Robot().createScreenCapture(screenRect);
