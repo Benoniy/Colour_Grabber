@@ -7,11 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class colourElement extends JPanel {
-    MyFrame frame;
 
     public colourElement(grabberColour c, MyFrame frame) {
         super();
-        this.frame = frame;
 
         setLayout( new GridBagLayout());
         setPreferredSize(new Dimension(400, 90));

@@ -1,6 +1,5 @@
 import Utils.Constants;
 import Utils.grabberColour;
-import com.sun.webkit.CursorManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,13 +7,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
-public class captureWindow extends JFrame{
-    int pixel = 0;
-    Point location;
-    BufferedImage capture;
-    Rectangle screenRect = new Rectangle(0, 0, 0, 0);
+class captureWindow extends JFrame{
+    private int pixel = 0;
+    private Rectangle screenRect = new Rectangle(0, 0, 0, 0);
 
-    public captureWindow() throws AWTException, InterruptedException {
+    captureWindow(){
         super();
 
         this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
@@ -63,11 +60,11 @@ public class captureWindow extends JFrame{
         });
     }
 
-    public void grab(){
+    private void grab(){
         try {
             setBackground(new Color(0, 0, 0, 0));
-            location = MouseInfo.getPointerInfo().getLocation();
-            capture = new Robot().createScreenCapture(screenRect);
+            Point location = MouseInfo.getPointerInfo().getLocation();
+            BufferedImage capture = new Robot().createScreenCapture(screenRect);
             pixel = capture.getRGB(location.x, location.y);
         }
         catch (Exception e){
