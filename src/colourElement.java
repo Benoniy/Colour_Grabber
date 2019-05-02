@@ -1,7 +1,6 @@
-
+import GUI.MyLabel;
 import Utils.Constants;
 import Utils.grabberColour;
-import GUI.*;
 
 import javax.swing.*;
 import java.awt.*;
