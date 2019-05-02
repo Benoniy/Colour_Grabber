@@ -16,6 +16,7 @@ public class captureWindow extends JFrame{
     public captureWindow() throws AWTException, InterruptedException {
         super();
 
+        toFront();
         setAlwaysOnTop(true);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -62,6 +63,7 @@ public class captureWindow extends JFrame{
 
     public void grab(){
         try {
+            setBackground(new Color(0, 0, 0, 0));
             location = MouseInfo.getPointerInfo().getLocation();
             capture = new Robot().createScreenCapture(screenRect);
             pixel = capture.getRGB(location.x, location.y);

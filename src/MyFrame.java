@@ -22,6 +22,8 @@ public class MyFrame extends JFrame {
         setUndecorated(false);
         setVisible(true);
 
+        toFront();
+
         setMinimumSize(new Dimension(400, 590));
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
