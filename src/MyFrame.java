@@ -94,7 +94,7 @@ public class MyFrame extends JFrame {
         colourPanel.removeAll();
         if (Constants.colours.size() > 6){
             colourPanel.setLayout(new GridLayout(Constants.colours.size(),1));
-            colourPanel.setPreferredSize(new Dimension(400, 540 + ((Constants.colours.size() - 5) * 40)));
+            colourPanel.setPreferredSize(new Dimension(400, 540 + ((Constants.colours.size() - 6) * 90)));
             scroll.setPreferredSize(new Dimension(420, 542));
         }
         else {

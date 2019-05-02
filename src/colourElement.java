@@ -83,7 +83,7 @@ public class colourElement extends JPanel {
             int size = frame.colourPanel.getSize().height;
             if (size > 542){
                 if (Constants.colours.size() > 6){
-                    frame.colourPanel.setPreferredSize(new Dimension(400, size - 40));
+                    frame.colourPanel.setPreferredSize(new Dimension(400, size - 90));
                 }
                 else {
                     frame.colourPanel.setPreferredSize(new Dimension(400, 540));
