@@ -1,11 +1,13 @@
+package Utils;
+
 import java.awt.*;
 
 public class grabberColour {
-    private int red, green, blue;
-    private String hex;
-    private Color rgb;
+    public int red, green, blue;
+    public String hex;
+    public Color rgb;
 
-    grabberColour(int pixel){
+    public grabberColour(int pixel){
         red = (pixel >> 16) & 0xff;
         green = (pixel >> 8) & 0xff;
         blue = (pixel) & 0xff;

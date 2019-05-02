@@ -1,17 +1,22 @@
+import Utils.Constants;
+import Utils.grabberColour;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-class captureWindow extends JFrame{
-    private ArrayList<grabberColour> colours = new ArrayList<>();
-    private int pixel = 0;
-    private boolean loop = true;
+public class captureWindow extends JFrame{
+    int pixel = 0;
+    Point location;
+    BufferedImage capture;
+    Rectangle screenRect = new Rectangle(0, 0, 0, 0);
 
-    captureWindow() throws AWTException, InterruptedException {
+    public captureWindow() throws AWTException, InterruptedException {
         super();
+
+        setAlwaysOnTop(true);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth();
@@ -21,62 +26,48 @@ class captureWindow extends JFrame{
 
         for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()){
             sizeX += width;
+            screenRect = screenRect.union(gd.getDefaultConfiguration().getBounds());
         }
 
         setSize(sizeX,sizeY);
         setTitle("Colour Grabber");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
         setBackground(new Color(0, 0, 0, 1));
         setVisible(true);
 
-        //Initialisation
-        Rectangle screenRect = new Rectangle(0, 0, 0, 0);
-        for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()) {
-            screenRect = screenRect.union(gd.getDefaultConfiguration().getBounds());
-        }
-
-        Point location;
-        BufferedImage capture;
-
         addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent mouseEvent) {
-            }
+            public void mouseClicked(MouseEvent e){}
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-            }
-            @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-                int e = mouseEvent.getButton();
-                if (e == MouseEvent.BUTTON1){
-                    colours.add(new grabberColour(pixel));
-                }
-                else if (e == MouseEvent.BUTTON3){
-                    System.out.println("\n******************************************");
-                    System.out.println("\nColours:");
-                    for (grabberColour c : colours){
-                        System.out.println(c.toString());
-                    }
-                    System.out.println("\n******************************************\n");
-                }
+            public void mousePressed(MouseEvent e){}
 
-            }
             @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
+            public void mouseReleased(MouseEvent e) {
+                int press = e.getButton();
+
+                if (press == MouseEvent.BUTTON1){
+                    grab();
+                    Constants.colours.add(new grabberColour(pixel));
+                    Main.startGui();
+                }
             }
+
             @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-            }
+            public void mouseEntered(MouseEvent e){}
+            @Override
+            public void mouseExited(MouseEvent e){}
+
         });
+    }
 
-        //Screen grabs every 33ms for a frame rate of 31 fps
-
-        while (loop){
+    public void grab(){
+        try {
             location = MouseInfo.getPointerInfo().getLocation();
             capture = new Robot().createScreenCapture(screenRect);
             pixel = capture.getRGB(location.x, location.y);
-            Thread.sleep(33);
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
