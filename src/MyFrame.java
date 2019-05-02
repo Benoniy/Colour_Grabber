@@ -1,5 +1,4 @@
 import GUI.MyButton;
-import GUI.colourElement;
 import Utils.Constants;
 import Utils.grabberColour;
 
@@ -9,6 +8,7 @@ import java.awt.*;
 
 public class MyFrame extends JFrame {
     GridLayout colourPanelLayout = new GridLayout(6, 1);
+    JScrollPane scroll;
     JPanel colourPanel = new JPanel(colourPanelLayout);
 
     public MyFrame(String title){
@@ -19,7 +19,6 @@ public class MyFrame extends JFrame {
     //Regular functioning window
     public void genDefaultLayout(){
         setBackground(Color.LIGHT_GRAY);
-        setUndecorated(false);
         setVisible(true);
 
         toFront();
@@ -69,7 +68,13 @@ public class MyFrame extends JFrame {
 
         colourPanel.setPreferredSize(new Dimension(400, 540));
         colourPanel.setBackground(Color.BLUE);
-        contentPanel.add(colourPanel, gbc);
+        colourPanel.setAutoscrolls(true);
+
+        scroll = new JScrollPane(colourPanel);
+        scroll.setPreferredSize(new Dimension(402, 542));
+
+
+        contentPanel.add(scroll, gbc);
 
         genColourPanel();
 
@@ -87,8 +92,21 @@ public class MyFrame extends JFrame {
     }
 
     public void genColourPanel(){
-        for (grabberColour c : Constants.colours){
-            colourPanel.add(new colourElement(c));
+        colourPanel.removeAll();
+        if (Constants.colours.size() > 6){
+            colourPanel.setLayout(new GridLayout(Constants.colours.size(),1));
+            colourPanel.setPreferredSize(new Dimension(400, 540 + ((Constants.colours.size() - 5) * 40)));
+            scroll.setPreferredSize(new Dimension(420, 542));
         }
+        else {
+            colourPanel.setLayout(new GridLayout(6, 1));
+        }
+
+        for (grabberColour c : Constants.colours){
+            colourPanel.add(new colourElement(c, this));
+        }
+
+        colourPanel.revalidate();
+        colourPanel.repaint();
     }
 }
