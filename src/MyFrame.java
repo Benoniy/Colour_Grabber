@@ -67,7 +67,6 @@ public class MyFrame extends JFrame {
         gbc.gridheight = 9;
 
         colourPanel.setPreferredSize(new Dimension(400, 540));
-        colourPanel.setBackground(Color.BLUE);
         colourPanel.setAutoscrolls(true);
 
         scroll = new JScrollPane(colourPanel);
