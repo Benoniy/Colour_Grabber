@@ -7,9 +7,8 @@ import java.awt.*;
 
 
 public class MyFrame extends JFrame {
-    GridLayout colourPanelLayout = new GridLayout(6, 1);
     JScrollPane scroll;
-    JPanel colourPanel = new JPanel(colourPanelLayout);
+    JPanel colourPanel = new JPanel(new GridLayout(6, 1));
 
     public MyFrame(String title){
         super(title);
