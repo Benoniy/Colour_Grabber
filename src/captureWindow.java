@@ -1,5 +1,6 @@
 import Utils.Constants;
 import Utils.grabberColour;
+import com.sun.webkit.CursorManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class captureWindow extends JFrame{
     public captureWindow() throws AWTException, InterruptedException {
         super();
 
+        this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         toFront();
         setAlwaysOnTop(true);
 
