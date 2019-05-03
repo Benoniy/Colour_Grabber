@@ -1,4 +1,3 @@
-import Utils.Constants;
 import Utils.grabberColour;
 
 import javax.swing.*;

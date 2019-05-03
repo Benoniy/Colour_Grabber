@@ -1,5 +1,4 @@
 import GUI.MyButton;
-import Utils.Constants;
 import Utils.grabberColour;
 
 import javax.swing.*;
@@ -84,6 +83,17 @@ public class MyFrame extends JFrame {
             catch (Exception ex){
                 ex.printStackTrace();
             }
+        });
+
+        loadBut.addActionListener(e -> {
+            Constants.load(this);
+            colourPanel.revalidate();
+            colourPanel.repaint();
+        });
+        saveBut.addActionListener(e -> {
+            Constants.save(this);
+            colourPanel.revalidate();
+            colourPanel.repaint();
         });
 
         this.pack();

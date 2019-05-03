@@ -1,5 +1,4 @@
 import GUI.MyLabel;
-import Utils.Constants;
 import Utils.grabberColour;
 
 import javax.swing.*;

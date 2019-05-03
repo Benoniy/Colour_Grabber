@@ -16,6 +16,15 @@ public class grabberColour {
         System.out.println(this.toString());
     }
 
+    public grabberColour(Color color){
+        rgb = color;
+        red = rgb.getRed();
+        green = rgb.getGreen();
+        blue = rgb.getBlue();
+        hex = convertToHex(red, green, blue);
+        System.out.println(this.toString());
+    }
+
     private String convertToHex(int red, int green, int blue){
         StringBuilder out = new StringBuilder("#");
         int[] color = {red, green, blue};
