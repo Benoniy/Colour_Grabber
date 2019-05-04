@@ -1,4 +1,7 @@
+import Utils.FileChooser;
+
 import javax.swing.*;
+import java.io.File;
 
 
 public class Main {
@@ -10,8 +13,30 @@ public class Main {
 
     public static void startCap(){
         current.dispose();
+
+        current = new captureWindow();
+    }
+
+    public static void startIMGCap(){
+        current.dispose();
         try {
-            current = new captureWindow();
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                new FileChooser();
+                File dir = FileChooser.getFile();
+
+                current = new imageWindow(dir);
+
+
+            });
+
+
         }
         catch (Exception e) {
             e.printStackTrace();

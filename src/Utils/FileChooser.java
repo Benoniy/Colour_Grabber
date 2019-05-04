@@ -17,8 +17,6 @@ public class FileChooser extends JPanel {
         //Create a file chooser
 
         fc = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt", "txt");
-        fc.setFileFilter(filter);
 
         if (cDir != null){
             fc.setCurrentDirectory(cDir);
@@ -28,7 +26,6 @@ public class FileChooser extends JPanel {
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             returnFile = fc.getSelectedFile();
-            returnFile = checkFileExtention(returnFile);
 
             cDir = new File(String.valueOf(returnFile.getParent()));
 

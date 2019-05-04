@@ -85,6 +85,15 @@ public class MyFrame extends JFrame {
             }
         });
 
+        newImgBut.addActionListener(e -> {
+            try{
+                Main.startIMGCap();
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
         loadBut.addActionListener(e -> {
             Constants.load(this);
             colourPanel.revalidate();
