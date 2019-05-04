@@ -34,10 +34,10 @@ public class Constants {
                 String[] list = str.split(",");
 
                 int count = 0, r = 0, g = 0, b = 0;
+                int calc = 3;
 
                 colours.clear();
                 for(String s : list){
-                    int calc = s.length() - 2;
                     if (count == 0){
                         r = Integer.parseInt(s.substring(calc, s.length()));
                     }
@@ -51,6 +51,7 @@ public class Constants {
                         colours.add(new grabberColour(new Color(r, g, b)));
                         count = -1;
                     }
+                    calc = 4;
                     count++;
                 }
 
@@ -60,6 +61,7 @@ public class Constants {
             }
 
             fr.genColourPanel();
+            fr.pack();
         });
     }
 
