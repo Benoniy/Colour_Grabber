@@ -20,7 +20,7 @@ public class Constants {
                 e.printStackTrace();
             }
 
-            new FileChooser();
+            new FileChooser("l");
             File dir = FileChooser.getFile();
 
             try{
@@ -74,12 +74,17 @@ public class Constants {
                 e.printStackTrace();
             }
 
-            new FileChooser();
-            File dir = FileChooser.getFile();
+            new FileChooser("s");
+            String dir = FileChooser.getFileStr();
+            if (!dir.toLowerCase().contains(".cfg")){
+                dir += ".cfg";
+            }
+
+            File file = new File(dir);
 
             try{
-                dir.delete();
-                FileWriter fileWriter = new FileWriter(dir);
+                file.delete();
+                FileWriter fileWriter = new FileWriter(file);
                 fileWriter.write(String.valueOf(colours));
                 fileWriter.close();
             }

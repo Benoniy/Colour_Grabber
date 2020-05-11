@@ -28,12 +28,10 @@ public class Main {
                     e.printStackTrace();
                 }
 
-                new FileChooser();
+                new FileChooser("i");
                 File dir = FileChooser.getFile();
 
                 current = new imageWindow(dir);
-
-
             });
 
 

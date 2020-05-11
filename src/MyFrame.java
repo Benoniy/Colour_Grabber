@@ -1,6 +1,6 @@
-import GUI.MyButton;
 import Utils.grabberColour;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,13 +9,13 @@ public class MyFrame extends JFrame {
     JScrollPane scroll;
     JPanel colourPanel = new JPanel(new GridLayout(6, 1));
 
-    public MyFrame(String title){
+    MyFrame(String title){
         super(title);
         genDefaultLayout();
     }
 
     //Regular functioning window
-    public void genDefaultLayout(){
+    private void genDefaultLayout(){
         setBackground(Color.LIGHT_GRAY);
         setVisible(true);
 
@@ -24,6 +24,13 @@ public class MyFrame extends JFrame {
         setMinimumSize(new Dimension(400, 590));
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        try {
+            this.setIconImage(ImageIO.read(MyFrame.class.getResource("icon.png")));
+        } catch (Exception e) {
+            ImageIcon img = new ImageIcon("icon.png");
+            this.setIconImage(img.getImage());
+        }
 
         //Ui look and feel
         try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
@@ -41,21 +48,21 @@ public class MyFrame extends JFrame {
         gbc.gridwidth = 1;
 
         gbc.gridx = 0;
-        MyButton newBut = new MyButton("New");
+        JButton newBut = new JButton("New...");
         contentPanel.add(newBut, gbc);
 
         gbc.gridx = 1;
-        gbc.gridwidth = 2;
-        MyButton newImgBut = new MyButton("New From Image");
+        gbc.gridwidth = 1;
+        JButton newImgBut = new JButton("New From Image...");
         contentPanel.add(newImgBut, gbc);
 
-        gbc.gridx = 3;
+        gbc.gridx = 2;
         gbc.gridwidth = 1;
-        MyButton saveBut = new MyButton("Save");
+        JButton saveBut = new JButton("Save");
         contentPanel.add(saveBut, gbc);
 
-        gbc.gridx = 4;
-        MyButton loadBut = new MyButton("Load");
+        gbc.gridx = 3;
+        JButton loadBut = new JButton("Load");
         contentPanel.add(loadBut, gbc);
 
         //Row 1

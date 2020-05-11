@@ -3,7 +3,6 @@ package Utils;
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileChooser extends JPanel {
@@ -11,12 +10,17 @@ public class FileChooser extends JPanel {
     private static File returnFile;
     private static File cDir = null;
 
-    public FileChooser() {
+    public FileChooser(String mode) {
         super(new BorderLayout());
 
         //Create a file chooser
 
         fc = new JFileChooser();
+
+        if (mode.equals("s") | mode.equals("l")){
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("configuration files (.cfg)", "cfg", "config");
+            fc.setFileFilter(filter);
+        }
 
         if (cDir != null){
             fc.setCurrentDirectory(cDir);
@@ -37,17 +41,11 @@ public class FileChooser extends JPanel {
 
     }
 
-    public static File checkFileExtention(File in) {
-        if (!in.toPath().toString().contains(".txt")) {
-            in = new File(in.getPath() + ".txt");
-        }
-
-        return in;
+    public static File getFile() {
+        return returnFile;
     }
 
-    public static File getFile() {
-
-
-        return returnFile;
+    public static String getFileStr(){
+        return returnFile.toString();
     }
 }
