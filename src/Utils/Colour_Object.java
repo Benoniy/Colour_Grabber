@@ -2,12 +2,12 @@ package Utils;
 
 import java.awt.*;
 
-public class grabberColour {
+public class Colour_Object {
     public int red, green, blue;
     public String hex;
     public Color rgb;
 
-    public grabberColour(int pixel){
+    public Colour_Object(int pixel){
         red = (pixel >> 16) & 0xff;
         green = (pixel >> 8) & 0xff;
         blue = (pixel) & 0xff;
@@ -16,7 +16,7 @@ public class grabberColour {
         System.out.println(this.toString());
     }
 
-    public grabberColour(Color color){
+    public Colour_Object(Color color){
         rgb = color;
         red = rgb.getRed();
         green = rgb.getGreen();

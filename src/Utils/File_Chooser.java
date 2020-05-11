@@ -5,12 +5,12 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class FileChooser extends JPanel {
+public class File_Chooser extends JPanel {
     private JFileChooser fc;
     private static File returnFile;
     private static File cDir = null;
 
-    public FileChooser(String mode) {
+    public File_Chooser(String mode) {
         super(new BorderLayout());
 
         //Create a file chooser
@@ -26,7 +26,7 @@ public class FileChooser extends JPanel {
             fc.setCurrentDirectory(cDir);
         }
 
-        int returnVal = fc.showOpenDialog(FileChooser.this);
+        int returnVal = fc.showOpenDialog(File_Chooser.this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             returnFile = fc.getSelectedFile();

@@ -1,12 +1,12 @@
 import GUI.MyLabel;
-import Utils.grabberColour;
+import Utils.Colour_Object;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class colourElement extends JPanel {
+public class Colour_Frame extends JPanel {
 
-    public colourElement(grabberColour c, MyFrame frame) {
+    public Colour_Frame(Colour_Object c, MyFrame frame) {
         super();
 
         setLayout( new GridBagLayout());

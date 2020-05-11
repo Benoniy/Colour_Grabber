@@ -1,16 +1,15 @@
-import Utils.grabberColour;
-
+import Utils.Colour_Object;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
-class captureWindow extends JFrame{
+class Capture_Window extends JFrame{
     private int pixel = 0;
     private Rectangle screenRect = new Rectangle(0, 0, 0, 0);
 
-    captureWindow(){
+    Capture_Window(){
         super();
 
         this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
@@ -19,16 +18,14 @@ class captureWindow extends JFrame{
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth();
-        int sizeY = (int) screenSize.getHeight();
-
-        int sizeX = width;
+        int height = (int) screenSize.getHeight();
 
         for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()){
-            sizeX += width;
+            width += width;
             screenRect = screenRect.union(gd.getDefaultConfiguration().getBounds());
         }
 
-        setSize(sizeX,sizeY);
+        setSize(width, height);
         setTitle("Colour Grabber");
         setUndecorated(true);
         setBackground(new Color(0, 0, 0, 1));
@@ -43,10 +40,9 @@ class captureWindow extends JFrame{
             @Override
             public void mouseReleased(MouseEvent e) {
                 int press = e.getButton();
-
                 if (press == MouseEvent.BUTTON1){
                     grab();
-                    Constants.colours.add(new grabberColour(pixel));
+                    Constants.colours.add(new Colour_Object(pixel));
                     Main.startGui();
                 }
             }

@@ -1,5 +1,4 @@
-import Utils.grabberColour;
-
+import Utils.Colour_Object;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -8,11 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-class imageWindow extends JFrame{
+class Image_Window extends JFrame{
     private int pixel = 0;
     private Rectangle screenRect = new Rectangle(0, 0, 1920, 1080);
 
-    imageWindow(File imgFile){
+    Image_Window(File imgFile){
         super();
         try {
             if (!imgFile.exists()){
@@ -24,11 +23,9 @@ class imageWindow extends JFrame{
 
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             int width = (int) screenSize.getWidth();
-            int sizeY = (int) screenSize.getHeight();
+            int height = (int) screenSize.getHeight();
 
-            int sizeX = width;
-
-            setSize(sizeX, sizeY);
+            setSize(width, height);
             setTitle("Colour Grabber");
             setBackground(Color.BLACK);
             setVisible(true);
@@ -55,7 +52,7 @@ class imageWindow extends JFrame{
 
                     if (press == MouseEvent.BUTTON1) {
                         grab();
-                        Constants.colours.add(new grabberColour(pixel));
+                        Constants.colours.add(new Colour_Object(pixel));
                         Main.startGui();
                     }
                 }

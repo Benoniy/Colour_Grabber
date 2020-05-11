@@ -1,5 +1,4 @@
-import Utils.FileChooser;
-
+import Utils.File_Chooser;
 import javax.swing.*;
 import java.io.File;
 
@@ -13,8 +12,7 @@ public class Main {
 
     public static void startCap(){
         current.dispose();
-
-        current = new captureWindow();
+        current = new Capture_Window();
     }
 
     public static void startIMGCap(){
@@ -28,10 +26,10 @@ public class Main {
                     e.printStackTrace();
                 }
 
-                new FileChooser("i");
-                File dir = FileChooser.getFile();
+                new File_Chooser("i");
+                File dir = File_Chooser.getFile();
 
-                current = new imageWindow(dir);
+                current = new Image_Window(dir);
             });
 
 

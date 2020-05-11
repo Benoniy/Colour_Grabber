@@ -1,14 +1,12 @@
-import Utils.FileChooser;
-import Utils.grabberColour;
-
+import Utils.File_Chooser;
+import Utils.Colour_Object;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
 public class Constants {
-    public static ArrayList<grabberColour> colours = new ArrayList<>();
-
+    public static ArrayList<Colour_Object> colours = new ArrayList<>();
 
     public static void load(MyFrame fr){
 
@@ -20,8 +18,8 @@ public class Constants {
                 e.printStackTrace();
             }
 
-            new FileChooser("l");
-            File dir = FileChooser.getFile();
+            new File_Chooser("l");
+            File dir = File_Chooser.getFile();
 
             try{
                 BufferedReader rd = new BufferedReader(new FileReader(dir));
@@ -33,8 +31,7 @@ public class Constants {
 
                 String[] list = str.split(",");
 
-                int count = 0, r = 0, g = 0, b = 0;
-                int calc = 3;
+                int count = 0, r = 0, g = 0, b = 0, calc = 3;
 
                 colours.clear();
                 for(String s : list){
@@ -48,7 +45,7 @@ public class Constants {
                         b = Integer.parseInt(s.substring(calc, s.length()));
                     }
                     else if (count == 3){
-                        colours.add(new grabberColour(new Color(r, g, b)));
+                        colours.add(new Colour_Object(new Color(r, g, b)));
                         count = -1;
                     }
                     calc = 4;
@@ -74,8 +71,8 @@ public class Constants {
                 e.printStackTrace();
             }
 
-            new FileChooser("s");
-            String dir = FileChooser.getFileStr();
+            new File_Chooser("s");
+            String dir = File_Chooser.getFileStr();
             if (!dir.toLowerCase().contains(".cfg")){
                 dir += ".cfg";
             }

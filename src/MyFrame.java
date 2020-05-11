@@ -1,4 +1,4 @@
-import Utils.grabberColour;
+import Utils.Colour_Object;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -126,8 +126,8 @@ public class MyFrame extends JFrame {
             colourPanel.setLayout(new GridLayout(6, 1));
         }
 
-        for (grabberColour c : Constants.colours){
-            colourPanel.add(new colourElement(c, this));
+        for (Colour_Object c : Constants.colours){
+            colourPanel.add(new Colour_Frame(c, this));
         }
 
         colourPanel.revalidate();
